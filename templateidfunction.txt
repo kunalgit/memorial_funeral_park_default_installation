@@ -1,0 +1,5 @@
+function theme4_preprocess_node(&$vars, $hook) {
+  $node = $vars['node'];
+  $vars['template_file'] = 'node-'. $node->field_obit_template_id[0]['value'];
+}
+
