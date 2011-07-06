@@ -10,14 +10,21 @@ if (!$con)
 }
 
 mysql_select_db('',$con);
-$mig = "DROP TABLE IF EXISTS `site2`.`ddetails`";
-$mig1 = "CREATE TABLE `site2`.`ddetails` LIKE `CManager_development`.`details`";
-$mig2 = "INSERT INTO `site2`.`ddetails` SELECT * FROM `CManager_development`.`details`";
+$mig = "DROP TABLE IF EXISTS `site7`.`ddetails`";
+$mig1 = "CREATE TABLE `site7`.`ddetails` LIKE `CManager_development`.`details`";
+$mig2 = "INSERT INTO `site7`.`ddetails` SELECT * FROM `CManager_development`.`details`";
+$mig5 = "DROP TABLE IF EXISTS `site7`.`member_services`";
+$mig6 = "CREATE TABLE `site7`.`member_services` LIKE `CManager_development`.`member_services`";
+$mig7 = "INSERT INTO `site7`.`member_services` SELECT * FROM `CManager_development`.`member_services`";
+
 mysql_query($mig) or die($mig. mysql_error());
 mysql_query($mig1) or die($mig1. mysql_error());
 mysql_query($mig2) or die($mig2. mysql_error());
+mysql_query($mig5) or die($mig5. mysql_error());
+mysql_query($mig6) or die($mig6. mysql_error());
+mysql_query($mig7) or die($mig7. mysql_error());
 
-mysql_select_db('site2',$con);//DATABASE NAME IS SITE2
+mysql_select_db('site7',$con);//DATABASE NAME IS site7
 $sqlmt = "SELECT * from ddetails where location_id = '$lid'";
 $rsmd = mysql_query($sqlmt) or die($sqlmt. mysql_error());
 print_r("start: ".strftime('%c')."\n");
@@ -83,6 +90,27 @@ $node->field_location_id[0]['value'] = "".(trim($rowmd['location_id']))."";
 $node->field_test_id[0]['value'] = "".(trim($rowmd['test_id']))."";
 $node->field_display[0]['value'] = "".(trim($rowmd['display']))."";
 $node->field_obit_member_id[0]['value'] = "".trim($rowmd['obit_member_id'])."";
+
+
+
+
+$sqlser = "SELECT * from member_services where obit_member_id ='".trim($rowmd['obit_member_id'])."'";
+$rsmdser = mysql_query($sqlser) or die($sqlser. mysql_error());
+$i=0;
+while($rowmdser = mysql_fetch_array($rsmdser))
+{
+$node->field_event_date[$i]['value'] = "".trim($rowmdser['event_date'])."";
+$node->field_event_start_time[$i]['value'] = "".trim($rowmdser['event_start_time'])."";
+$node->field_event_end_time[$i]['value'] = "".trim($rowmdser['event_end_time'])."";
+$node->field_event_address[$i]['value'] = "".trim($rowmdser['address'])."";
+$node->field_event_city[$i]['value'] = "".trim($rowmdser['city'])."";
+$node->field_event_zip[$i]['value'] = "".trim($rowmdser['zip'])."";
+$node->field_event_map_link[$i]['value'] = "".trim($rowmdser['overide_map_link'])."";
+$node->field_event_created_at[$i]['value'] = "".trim($rowmdser['created_at'])."";
+$node->field_event_location_name[$i]['value'] = "".trim($rowmdser['location_name'])."";
+$node->field_event_service_type_name[$i]['value'] = "".trim($rowmdser['service_type_name'])."";
+$i=$i+1;
+}
 // If known, the taxonomy TID values can be added as an array.
 $node->taxonomy = array(2,3,1,);
 $r=$r+1;
@@ -95,7 +123,7 @@ if (!$con1)
 {
 	die('Could not connect: ' . mysql_error());
 }
-mysql_select_db('site2',$con1);
+mysql_select_db('site7',$con1);
 $sqlmt2 = "SELECT nid,field_obit_member_id_value from content_type_obit_user_links";
 $rsmd2 = mysql_query($sqlmt2) or die($sqlmt2. mysql_error());
 $r = 0;
@@ -115,6 +143,7 @@ $sqlvt = "UPDATE variable SET value = '".mysql_real_escape_string($str)."' WHERE
 $ins = mysql_query($sqlvt) or die($sqlvt." :: ".mysql_error());
 print_r("url rewrite rule also added: ".strftime('%c')."\n");
 $mig4 = "DROP TABLE IF EXISTS `ddetails`";
+$mig8 = "DROP TABLE IF EXISTS `member_services`";
 mysql_query($mig4);
 ?>
 COMPLETED!!!!!!!
