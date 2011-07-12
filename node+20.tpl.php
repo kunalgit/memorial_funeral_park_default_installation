@@ -1,0 +1,109 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Nature -  Autumn1</title>
+<link href="/sites/site1.com/themes/theme4/css/sample_2.css" rel="stylesheet" type="text/css" />
+<LINK rel="stylesheet" type"text/css"  href="print.css" media="print">
+
+</head>
+
+<body class="body_style">
+
+<div align="center" >
+<div class="dotted_outline">
+	<div class=" image_twohundredarea"  >
+    
+	<!--main content area starts here-->
+		<div align="center" class="content_area"> 
+	
+                
+                <!--Obit Text Start-->
+          <div class="obit_textarea" >
+                <!--Obit Heading Start-->
+                <div class="heading">
+                In Celebration of a life well lived
+                
+                </div>
+                 <!--Obit Heading End-->
+            <div  align="justify" class="obit_text">
+<?php print_r($node->field_biography[0]['value']) ?>
+
+            </div>
+                
+          </div>
+          <!--Obit Text End-->
+          <!--bio text start-->
+		  <div align="center" class="biotext">
+            	<!--Name-->
+              <div class="name" >
+                <h1 class="name" style="padding-top:0px; margin-top:0px"><?php print_r($node->field_fname[0]['value']." ".$node->field_mname[0]['value']." ".$node->field_lname[0]['value'])?></h1>
+              </div>
+                
+                <!--D.O.B / D.O.D-->
+              <div class="date_birth_death">
+                <?php print_r($node->field_birth_month[0]['value']." ".$node->field_birth_day[0]['value'].", ".$node->field_birth_year[0]['value']." - ".$node->field_death_month[0]['value']." ".$node->field_death_day[0]['value'].", ".$node->field_death_year[0]['value'] ) ?>
+              </div>
+                
+                <!--Photograph-->
+<!--                <div align="center" class="photo_bg"><img class="photo"src="images/photo.jpg" alt="Lewie Leo Bently" /></div>
+-->                <?php $strimg="/sites/site1.com/files/obit_images/".$node->field_obit_member_id[0]['value'].".png" ?>
+<?php if(isset($node->field_obit_image[0]['fid'])) { print_r('<div align="center" class="photo_bg"><img class="photo" src="'.$strimg.'" alt="Lewie Leo Bently" /></div>'); echo "<br>";}?> 
+
+
+            <!--Bio Start-->
+            <div align="left" class="bio_description">
+<?php if(isset($node->field_nickname[0]['value'])) { echo '<span class="bio_category">Nick Name :</span>'; print_r($node->field_nickname[0]['value']); echo "<br>";}?> 
+<?php if(isset($node->field_sex[0]['value'])) { echo '<span class="bio_category">Gender :</span>'; if($node->field_sex[0]['value']==1 ) {print_r("Male");} else {print("Female");} echo "<br>";}?>
+
+<!--				<span class="bio_category">Gender :</span>Male<br>   -->
+<?php if(isset($node->field_birth_city[0]['value'])) {echo '<span class="bio_category"> City :</span>'; print_r($node->field_birth_city[0]['value'].", ".$node->field_birth_state[0]['value']); echo "<br>";}?>
+<?php if(isset($node->field_birth_country[0]['value'])) {echo '<span class="bio_category"> Birth Region / Country :</span>'; print_r($node->field_birth_country[0]['value']); echo "<br>";}?>
+<!--				<span class="bio_category"> Birth Region / Country :</span> Birthcountry<br>-->
+<?php if(isset($node->field_birth_place[0]['value'])) {echo '<span class="bio_category"> Place of Birth :</span>'; print_r($node->field_birth_place[0]['value']); echo "<br>";}?>
+<!--				<span class="bio_category"> Place of Birth : </span>Birthplace<br>-->
+
+<?php if(isset($node->field_birth_place[0]['value'])) {echo '<span class="bio_category"> Passed Away At : </span>'; print_r($node->field_death_place[0]['value']." ".$node->field_death_city[0]['value']." ".$node->field_death_state[0]['value']." ".$node->field_death_country[0]['value']); echo "<br>";}?> 
+<?php if(isset($node->field_current_city[0]['value'])) {echo '<span class="bio_category"> City, State, Zipcode :</span>'; print_r($node->field_current_city[0]['value'].", ".$node->field_current_state[0]['value'].", ".$node->field_zipcode[0]['value']); echo "<br>";}?>
+<?php if(isset($node->field_occupation[0]['value'])) {echo '<span class="bio_category">Occupation :</span>'; print_r($node->field_occupation[0]['value']); echo"<br>";}?>
+<?php if(isset($node->field_hobbies[0]['value'])) {echo '<span class="bio_category">Hobbies :</span>'; print_r($node->field_hobbies[0]['value']); echo "<br>";}?>
+<?php if(isset($node->field_organization[0]['value'])) {echo '<span class="bio_category">Organizations :</span>'; print_r($node->field_organization[0]['value']); echo "<br>";}?>
+
+				<span class="bio_category">Visitation</span> : 04-24-2010, 11:00 am-2:30 pm at <a href="#" style="color:#000000">Memorial Park Funeral Home</a><br>
+
+			  <span class="bio_category">Services</span> : 04-26-2010, 11:00 am-2:30 pm at <a href="#" Style="color:#000000" >Memorial Park Funeral Home</a><br>
+
+				<span class="bio_category">Donations</span> : Name, Address, Phone Name, Address, Phone<br>
+                            
+            </div>
+               
+               
+          </div>
+                <!--Bio Text End-->
+                
+              <!-- BOTTOM BAR BEGIN-->
+  <div class="noprint" style="float:left; width:100%; background-image: url(images/sample2_index_8.png); padding-bottom:12px;padding-left:0;padding-right:0; padding-top:7px; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:bold; color: #000000;
+ ">GUESTBOOOK<br />
+        <div class="obit_text">
+
+       
+          Share your thoughts and memories about Sidney Carroll White in the guestbook.<br />
+         <a href="/obituary/user/guestbook?id=734" class="detailstext" onclick="window.open(this.href,'Guest book sign in','height=400,width=600,scrollbars=yes');return false;">Sign in Guestbook</a>&nbsp;&nbsp;&nbsp;&nbsp; | <a href="/obituary/user/guestbook/messages?id=734" class="detailstext" onclick="window.open(this.href,'Read guest book ','height=400,width=600,scrollbars=yes');return false;">Read guestbook</a> | <a href="/obituary/user/show/template?id=734&amp;print_preview=1" class="detailstext" onclick="window.open(this.href,'Print Preview','fullscreen=yes,scrollbars=yes');return false;">Print this Page</a>  | &nbsp;&nbsp;&nbsp;&nbsp;To request a change in content click <a href="/obituary/request/content/change?id=734" class="contentrequesttext" onclick="window.open(this.href,'Request change in content','height=500,width=600,scrollbars=yes');return false;">here</a>                       
+</div>
+</div>
+  <!--BOTTOM BAR END-->  
+                
+ 		</div> 
+        
+  </div>
+  
+</div> 
+  
+</div>
+
+
+</body>
+</html>
