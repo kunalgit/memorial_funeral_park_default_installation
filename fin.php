@@ -10,12 +10,12 @@ if (!$con)
 }
 
 mysql_select_db('',$con);
-$mig = "DROP TABLE IF EXISTS `site7`.`ddetails`";
-$mig1 = "CREATE TABLE `site7`.`ddetails` LIKE `CManager_development`.`details`";
-$mig2 = "INSERT INTO `site7`.`ddetails` SELECT * FROM `CManager_development`.`details`";
-$mig5 = "DROP TABLE IF EXISTS `site7`.`member_services`";
-$mig6 = "CREATE TABLE `site7`.`member_services` LIKE `CManager_development`.`member_services`";
-$mig7 = "INSERT INTO `site7`.`member_services` SELECT * FROM `CManager_development`.`member_services`";
+$mig = "DROP TABLE IF EXISTS `2`.`ddetails`";
+$mig1 = "CREATE TABLE `2`.`ddetails` LIKE `CManager_development`.`details`";
+$mig2 = "INSERT INTO `2`.`ddetails` SELECT * FROM `CManager_development`.`details`";
+$mig5 = "DROP TABLE IF EXISTS `2`.`member_services`";
+$mig6 = "CREATE TABLE `2`.`member_services` LIKE `CManager_development`.`member_services`";
+$mig7 = "INSERT INTO `2`.`member_services` SELECT * FROM `CManager_development`.`member_services`";
 
 mysql_query($mig) or die($mig. mysql_error());
 mysql_query($mig1) or die($mig1. mysql_error());
@@ -24,7 +24,7 @@ mysql_query($mig5) or die($mig5. mysql_error());
 mysql_query($mig6) or die($mig6. mysql_error());
 mysql_query($mig7) or die($mig7. mysql_error());
 
-mysql_select_db('site7',$con);//DATABASE NAME IS site7
+mysql_select_db('2',$con);//DATABASE NAME IS 2
 $sqlmt = "SELECT * from ddetails where location_id = '$lid'";
 $rsmd = mysql_query($sqlmt) or die($sqlmt. mysql_error());
 print_r("start: ".strftime('%c')."\n");
@@ -114,6 +114,18 @@ $i=$i+1;
 // If known, the taxonomy TID values can be added as an array.
 $node->taxonomy = array(2,3,1,);
 $r=$r+1;
+
+$obitid="".trim($rowmd['obit_member_id'])."";
+$imagefile = '/home/kunal/Desktop/images/'.$obitid.'.png';
+$field = content_fields('field_obit_image', 'obit_user_links');
+$validators = array_merge(filefield_widget_upload_validators($field), imagefield_widget_upload_validators($field));
+$files_path = filefield_widget_file_path($field);
+variable_set('file_directory_path', 'sites/site1.com/files/obit_images');
+$file = field_file_save_file($imagefile, $validators, "sites/site1.com/files/obit_images" , FILE_EXISTS_REPLACE);
+//print_r($file['fid']);
+$node->field_obit_image[0]['fid'] = $file['fid'];
+$node = node_submit($node);
+print_r("obit image added!!"."\n");
 print_r("obit migrated : ".$r."\n");
 node_save($node);
 }
@@ -123,7 +135,7 @@ if (!$con1)
 {
 	die('Could not connect: ' . mysql_error());
 }
-mysql_select_db('site7',$con1);
+mysql_select_db('2',$con1);
 $sqlmt2 = "SELECT nid,field_obit_member_id_value from content_type_obit_user_links";
 $rsmd2 = mysql_query($sqlmt2) or die($sqlmt2. mysql_error());
 $r = 0;
