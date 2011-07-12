@@ -10,12 +10,12 @@ if (!$con)
 }
 
 mysql_select_db('',$con);
-$mig = "DROP TABLE IF EXISTS `2`.`ddetails`";
-$mig1 = "CREATE TABLE `2`.`ddetails` LIKE `CManager_development`.`details`";
-$mig2 = "INSERT INTO `2`.`ddetails` SELECT * FROM `CManager_development`.`details`";
-$mig5 = "DROP TABLE IF EXISTS `2`.`member_services`";
-$mig6 = "CREATE TABLE `2`.`member_services` LIKE `CManager_development`.`member_services`";
-$mig7 = "INSERT INTO `2`.`member_services` SELECT * FROM `CManager_development`.`member_services`";
+$mig = "DROP TABLE IF EXISTS `site1`.`ddetails`";
+$mig1 = "CREATE TABLE `site1`.`ddetails` LIKE `CManager_development`.`details`";
+$mig2 = "INSERT INTO `site1`.`ddetails` SELECT * FROM `CManager_development`.`details`";
+$mig5 = "DROP TABLE IF EXISTS `site1`.`member_services`";
+$mig6 = "CREATE TABLE `site1`.`member_services` LIKE `CManager_development`.`member_services`";
+$mig7 = "INSERT INTO `site1`.`member_services` SELECT * FROM `CManager_development`.`member_services`";
 
 mysql_query($mig) or die($mig. mysql_error());
 mysql_query($mig1) or die($mig1. mysql_error());
