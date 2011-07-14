@@ -1,0 +1,5 @@
+function theme4_preprocess_page(&$vars, $hook) {
+  $node = $vars['node'];
+  $vars['template_file'] = 'nodeid'. $node->nid;
+}
+
