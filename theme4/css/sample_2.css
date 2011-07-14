@@ -1,0 +1,166 @@
+@charset "utf-8";
+
+.body_style{ 
+background-color:#ffffff;
+/*background-image:url(images/bg_grad.jpg);background-repeat:repeat-x;*/
+
+margin:0px; 
+padding:0px;
+
+}
+
+.image_area{
+background-image:url(../autumn1/sample2_bg.jpg);;
+background-repeat:no-repeat;
+background-position:top-left;
+width:620px;
+margin: 1px;
+background-color:#f3c963;
+}
+
+.image_twohundredarea{
+background-image:url(../autumn1/sample2_bg_439px.jpg);
+background-repeat:no-repeat;
+background-position:top-left;
+width:620px;
+margin: 1px;
+background-color:#f3c963;
+}
+
+.dotted_outline{ border:1px dotted #cccccc; padding:1px; width:622px; height:auto;}
+
+.content_area{
+width: 620px;
+height: auto;
+display:inline-block;
+}
+
+
+
+.biotext{
+float:left; 
+width:185px; 
+height: auto; 
+padding:10px;
+padding-top:10px;
+margin-top:15px;
+border-left: 1px solid #000000 ;
+}
+
+
+.name { font-family: 'Tahoma', Arial, Sans-serif  ;
+font-size:24px;
+color: #347110;
+font-weight:normal;
+padding-top:6px;
+}
+
+.date_birth_death {
+ font-family:'Tahoma', Arial, Sans-serif   ;
+font-size:12px;
+color: #347110;
+font-weight: normal;
+padding-bottom:3px;
+}
+
+.photo_bg { 
+background-image:url(../autumn1/photo_bg.png); 
+background-repeat:no-repeat;
+width: 123px; 
+height:160px;
+padding:0px;
+margin-bottom:30px;
+margin-top:30px;
+}
+
+.photo{
+width: 120px;
+height:150px;
+margin:5px
+}
+
+.bio_category{ 
+font-family: Arial, Helvetica, sans-serif; 
+font-size:12px;
+line-height: 18px;
+font-weight:bold; 
+font-style: normal;
+color:#000000;
+}
+
+.bio_description{ 
+font-family: Arial, Helvetica, sans-serif; 
+font-size:12px;
+line-height:18px;
+font-weight:normal; 
+font-style: normal;
+color:#000000;
+padding-top:3px;
+
+}
+
+
+.heading {
+font-family: Georgia, "Times New Roman", Times, serif  ;
+font-size:22px;  
+font-style:italic; 
+color:#347110; 
+text-shadow:#ffffff  1px 1px 4px;
+padding-top:2px;
+/*Text shadow for IE*/
+filter: Shadow(Color=#ffffff, 	
+Direction=115, Strength=4);
+
+}
+
+
+
+
+.obit_textarea {
+float:left;
+width:330px;
+padding:20px;
+padding-top:30px;
+
+}
+
+.obit_text { font-family: Georgia, "Times New Roman", Times, serif  ;  
+font-size:13px;
+line-height:16px;
+font-weight:bold; 
+color:#000000;
+padding-top:2px;
+}
+
+
+.print_btn {
+padding-bottom:4px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
