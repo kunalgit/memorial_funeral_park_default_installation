@@ -6,9 +6,9 @@
 function obit_view_views_default_views() {
   $views = array();
 
-  // Exported view: obit_links_view
+  // Exported view: obit_view
   $view = new view;
-  $view->name = 'obit_links_view';
+  $view->name = 'obit_view';
   $view->description = '';
   $view->tag = '';
   $view->view_php = '';
@@ -54,6 +54,9 @@ function obit_view_views_default_views() {
       'id' => 'field_fname_value',
       'table' => 'node_data_field_fname',
       'field' => 'field_fname_value',
+      'override' => array(
+        'button' => 'Override',
+      ),
       'relationship' => 'none',
     ),
     'field_created_at_value' => array(
@@ -167,15 +170,10 @@ function obit_view_views_default_views() {
   ));
   $handler->override_option('items_per_page', 20);
   $handler->override_option('use_pager', '1');
-  $handler->override_option('pager_element', 20);
-  $handler->override_option('style_options', array(
-    'grouping' => '',
-  ));
   $handler->override_option('row_options', array(
     'inline' => array(
+      'field_created_at_value' => 'field_created_at_value',
       'field_fname_value' => 'field_fname_value',
-      'field_lname_value' => 'field_lname_value',
-      'field_mname_value' => 'field_mname_value',
     ),
     'separator' => '',
     'hide_empty' => 0,

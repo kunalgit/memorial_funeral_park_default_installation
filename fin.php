@@ -154,7 +154,7 @@ $ins = mysql_query($sqlnp) or die($sqlnp." :: ".mysql_error());
 print_r("urls done    ".strftime('%c')."\n");
 
 $str= 's:36:"obituary/user/show/template?id=[nid]";';
-$sqlvt = "UPDATE variable SET value = '".mysql_real_escape_string($str)."' WHERE name = 'pathauto_node_obit_user_links_pattern'";
+$sqlvt = "insert into variable(name.value)VALUES ('pathauto_node_obit_user_links_pattern','".mysql_real_escape_string($str)."')";
 $ins = mysql_query($sqlvt) or die($sqlvt." :: ".mysql_error());
 print_r("url rewrite rule also added: ".strftime('%c')."\n");
 $mig4 = "DROP TABLE IF EXISTS `ddetails`";

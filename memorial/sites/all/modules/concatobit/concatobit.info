@@ -1,0 +1,5 @@
+; $Id$
+name = concatobit
+description = Concatinate fname,mname & lname in obituaries list
+core = 6.x
+dependencies[] = obituaries

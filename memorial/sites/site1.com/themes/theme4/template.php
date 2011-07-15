@@ -5,6 +5,19 @@
  *
  * Adds 'sidebar-left', 'sidebar-right' or 'sidebars' classes as needed.
  */
+function theme4_preprocess_node(&$vars, $hook) {
+  $node = $vars['node'];
+  $vars['template_file'] = 'node+'. $node->field_obit_template_id[0]['value'];
+}
+
+
+
+function theme4_preprocess_page(&$vars, $hook) {
+  $node = $vars['node'];
+  $vars['template_file'] = 'nodeid'. $node->nid;
+}
+
+
 function phptemplate_body_class($left, $right) {
   if ($left != '' && $right != '') {
     $class = 'sidebars';

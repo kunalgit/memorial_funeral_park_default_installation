@@ -38,9 +38,6 @@ function site1_profile_modules() {
     // Features
     'features',
     
-    //custom
-   'obit_content_type_module', 'obit_view', 'commentmodule', 
-    
   );
 
   return $modules;
@@ -129,60 +126,6 @@ function site1_profile_tasks(&$task, $url) {
 
 
 // Install a few primary link menu items by default.
-function site1_config_menu() {
-  // Create additional primary menu items
-  $items = array(
-    array('link_path' => '<front>', 'link_title' => t('Home'), 'weight' => 0),
-    array('link_path' => 'node/2', 'link_title' => t('Pre-planning'), 'weight' => 1),
-    array('link_path' => '<front>', 'link_title' => t('obituries'), 'weight' => 2),
-      array('link_path' => '<front>', 'link_title' => t('Funeral'), 'weight' => 3),
-        array('link_path' => '<front>', 'link_title' => t('Cementary'), 'weight' => 4),
-          array('link_path' => '<front>', 'link_title' => t('Cremation'), 'weight' => 5),
-            array('link_path' => '<front>', 'link_title' => t('About us'), 'weight' => 6),
-              array('link_path' => '<front>', 'link_title' => t('Local info'), 'weight' => 7),
-                array('link_path' => '<front>', 'link_title' => t('How to plan a funeral'), 'weight' => 8),
-                  array('link_path' => '<front>', 'link_title' => t('Veterans honors'), 'weight' => 9),
-            array('link_path' => '<front>', 'link_title' => t('Signature services'), 'weight' => 10),
-  );
-
-  foreach ($items as $item) {
-    $item += array(
-      'mlid' => 0,
-      'module' => 'menu',
-      'has_children' => 0,
-      'options' => array(
-        'attributes' => array(
-          'title' => '',
-        ),
-      ),
-      'customized' => 1,
-      'original_item' => array(
-        'link_title' => '',
-        'mlid' => 0,
-        'plid' => 0,
-        'menu_name' => 'primary-links',
-        'weight' => 1,
-        'link_path' => '',
-        'options' => array(),
-        'module' => 'menu',
-        'expanded' => 0,
-        'hidden' => 0,
-        'has_children' => 0,
-      ),
-      'description' => '',
-      'expanded' => 0,
-      'parent' => 'primary-links:0',
-      'hidden' => 0,
-      'plid' => 0,
-      'menu_name' => 'primary-links',
-    );
-    menu_link_save($item);
-    $funeral_mlid = db_result(db_query("select mlid from {menu_links} where link_title='Funeral'"));
-    db_query("update menu_links set has_children=1 where link_title='Funeral'");
-    db_query("update `menu_links` set plid = %d, p1= %d, p2=mlid, depth=2 where link_title in ('How to plan a funeral','Veterans honors','Signature services')", $funeral_mlid, $funeral_mlid);
- 
-  }
-}
 /**
  * Configure theme
  */

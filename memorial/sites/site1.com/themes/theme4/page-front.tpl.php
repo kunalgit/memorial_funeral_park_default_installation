@@ -10,8 +10,18 @@
 <meta name="google-site-verification" content="JCLMHXSylSarLZtjGJHXYYnjXLDPm3lS4LtlL6bCfHk">
 <?php print $styles ?>
 <?php print $scripts ?>
+<script type="text/javascript">
+function dialog()
+{
+$("#dialog").html('<iframe id="modalIframeId" width="100%" height="100%" marginWidth="0" marginHeight="0" frameBorder="0" scrolling="auto" />').dialog({height:'320', width:'500',position: 'centre'});
+$("#modalIframeId").attr("src","survey");
+}
+</script>
 	</head>
-	<body class="<?php print $body_classes; ?>">
+	<body class="<?php print $body_classes; ?>" onload="dialog()">
+
+<div id ="dialog">
+</div>
 	<?php $path_to_theme = base_path().path_to_theme(); ?>
 		<div id="wrapper">
 		<div id="header">
@@ -22,7 +32,7 @@
 					</div>
 					<div class="featured">
 						<ul>
-							<li><a class="contact" href="#">Contact Us</a></li>
+							<li><a class="contact" href="contact-us">Contact Us</a></li>
 							<li><a class="gift" href="#">Free Gift</a></li>
 						</ul>						
 					</div>

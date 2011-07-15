@@ -1,0 +1,18 @@
+<?php
+
+function concatobit_views_pre_execute(&$view) { 
+   if(trim($view->name) == "obit_view") {
+     $view->build_info['query'] = "SELECT node.nid AS nid, concat_ws(' ',node_data_field_display.field_fname_value, node_data_field_display.field_mname_value,node_data_field_display.field_lname_value) AS node_data_field_display_field_fname_value,".
+	" node.type AS node_type,".
+	" node.vid AS node_vid,".
+	" node_data_field_display.field_created_at_value AS node_data_field_display_field_created_at_value,".
+	" node_data_field_created_at.field_created_at_value AS node_data_field_created_at_field_created_at_value".
+	" FROM node node".
+	" LEFT JOIN content_type_obit_user_links node_data_field_display ON node.vid = node_data_field_display.vid".
+	" LEFT JOIN content_type_obit_user_links node_data_field_created_at ON node.vid = node_data_field_created_at.vid".
+	" WHERE (node.type in ('obit_user_links')) AND (node_data_field_display.field_display_value = 1)".
+	" ORDER BY node_data_field_created_at_field_created_at_value DESC";
+
+   }
+}
+?>
